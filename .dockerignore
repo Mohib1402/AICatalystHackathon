@@ -1,0 +1,64 @@
+# Dependencies (will be installed in container)
+node_modules
+.next
+.git
+.gitignore
+
+# Environment files (use secrets instead)
+.env
+.env.local
+.env.production
+.env.production.example
+
+# Documentation (not needed in production)
+*.md
+!README.md
+docs/
+internal/
+
+# Development scripts (not needed in production)
+scripts/
+configure-datadog-agent.sh
+datadog-init.js
+
+# Screenshots (only for submission, not in container)
+screenshots/
+
+# Development tools
+.DS_Store
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+.vscode
+.idea
+.vscode-test
+*.swp
+*.swo
+*~
+
+# Testing
+coverage
+.pytest_cache
+__pycache__
+*.pyc
+.tox
+.coverage
+
+# Build artifacts
+*.tsbuildinfo
+next-env.d.ts
+/out/
+/build/
+
+# Credentials (should use secrets)
+google-credentials.json
+*.pem
+*.key
+*.crt
+
+# Temporary files
+.dashboard-url.txt
+*.tmp
+*.temp

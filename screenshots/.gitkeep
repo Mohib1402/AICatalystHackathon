@@ -1,0 +1,12 @@
+# Screenshots Folder
+
+This folder will contain screenshots for the hackathon submission.
+
+## Required Screenshots (5 critical):
+1. 01-datadog-dashboard-full.png - Full Datadog dashboard
+2. 02-datadog-apm-trace-blocked.png - APM trace with security tags
+3. 03-datadog-monitors-list.png - List of 6 monitors
+4. 04-attack-blocked-ui.png - Attack blocked in chat UI
+5. 05-admin-dashboard.png - Admin portal dashboard
+
+See SCREENSHOTS_GUIDE.md for detailed instructions on capturing these.

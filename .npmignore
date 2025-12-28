@@ -1,0 +1,51 @@
+# Internal development documents
+/internal/
+
+# Environment files
+.env*
+!.env.production.example
+
+# Development scripts
+configure-datadog-agent.sh
+datadog-init.js
+
+# Screenshots (large files)
+/screenshots/
+
+# Keep these public docs:
+# README.md
+# LICENSE
+# SETUP.md
+# DEPLOYMENT.md
+# /docs/
+
+# Testing
+*.test.js
+*.test.ts
+*.spec.js
+*.spec.ts
+/coverage/
+
+# Build artifacts
+.next/
+/out/
+*.tsbuildinfo
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+
+# Credentials
+google-credentials.json
+*.pem
+
+# Misc
+.DS_Store
+.dashboard-url.txt

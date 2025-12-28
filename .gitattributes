@@ -1,0 +1,27 @@
+# Git attributes for proper language detection and diffs
+
+# Documentation
+*.md linguist-documentation
+
+# Mark internal docs as documentation
+internal/** linguist-documentation
+
+# Source code
+*.ts linguist-language=TypeScript
+*.tsx linguist-language=TypeScript
+*.js linguist-language=JavaScript
+*.jsx linguist-language=JavaScript
+
+# Configuration files
+*.json linguist-language=JSON
+*.yml linguist-language=YAML
+*.yaml linguist-language=YAML
+
+# Exclude from statistics (internal docs)
+internal/** linguist-generated=false linguist-vendored=false
+
+# Include in statistics (public docs and source)
+docs/** linguist-documentation
+lib/** linguist-language=TypeScript
+app/** linguist-language=TypeScript
+components/** linguist-language=TypeScript

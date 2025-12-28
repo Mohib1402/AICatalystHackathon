@@ -1,0 +1,430 @@
+{
+  "title": "DevShield AI - Security Monitoring Dashboard",
+  "description": "Real-time LLM security monitoring with Vertex AI sentiment analysis, cost attack detection, and comprehensive threat intelligence",
+  "widgets": [
+    {
+      "id": 1,
+      "definition": {
+        "title": "Attack Detection Overview",
+        "type": "query_value",
+        "requests": [
+          {
+            "q": "sum:security.attack.detected.total{*}.as_count()",
+            "aggregator": "sum"
+          }
+        ],
+        "autoscale": true,
+        "precision": 0,
+        "text_align": "center",
+        "custom_unit": "attacks"
+      },
+      "layout": {
+        "x": 0,
+        "y": 0,
+        "width": 3,
+        "height": 2
+      }
+    },
+    {
+      "id": 2,
+      "definition": {
+        "title": "Blocked Requests",
+        "type": "query_value",
+        "requests": [
+          {
+            "q": "sum:security.attack.blocked.total{*}.as_count()",
+            "aggregator": "sum"
+          }
+        ],
+        "autoscale": true,
+        "precision": 0,
+        "text_align": "center",
+        "custom_unit": "blocked"
+      },
+      "layout": {
+        "x": 3,
+        "y": 0,
+        "width": 3,
+        "height": 2
+      }
+    },
+    {
+      "id": 3,
+      "definition": {
+        "title": "Average Risk Score",
+        "type": "query_value",
+        "requests": [
+          {
+            "q": "avg:security.risk_score.distribution{*}",
+            "aggregator": "avg"
+          }
+        ],
+        "autoscale": false,
+        "precision": 1,
+        "text_align": "center",
+        "custom_unit": "/100"
+      },
+      "layout": {
+        "x": 6,
+        "y": 0,
+        "width": 3,
+        "height": 2
+      }
+    },
+    {
+      "id": 4,
+      "definition": {
+        "title": "Total LLM Requests",
+        "type": "query_value",
+        "requests": [
+          {
+            "q": "sum:llm.requests.total{*}.as_count()",
+            "aggregator": "sum"
+          }
+        ],
+        "autoscale": true,
+        "precision": 0,
+        "text_align": "center",
+        "custom_unit": "requests"
+      },
+      "layout": {
+        "x": 9,
+        "y": 0,
+        "width": 3,
+        "height": 2
+      }
+    },
+    {
+      "id": 5,
+      "definition": {
+        "title": "Attack Detection Rate (Last Hour)",
+        "type": "timeseries",
+        "requests": [
+          {
+            "q": "sum:security.attack.detected.total{*}.as_count()",
+            "display_type": "bars",
+            "style": {
+              "palette": "warm",
+              "line_type": "solid",
+              "line_width": "normal"
+            }
+          }
+        ],
+        "yaxis": {
+          "label": "Attacks",
+          "scale": "linear",
+          "min": "auto",
+          "max": "auto"
+        },
+        "markers": [
+          {
+            "value": "y = 5",
+            "display_type": "error dashed",
+            "label": "Critical Threshold"
+          }
+        ]
+      },
+      "layout": {
+        "x": 0,
+        "y": 2,
+        "width": 6,
+        "height": 3
+      }
+    },
+    {
+      "id": 6,
+      "definition": {
+        "title": "Risk Score Distribution",
+        "type": "timeseries",
+        "requests": [
+          {
+            "q": "avg:security.risk_score.distribution{*}",
+            "display_type": "line",
+            "style": {
+              "palette": "dog_classic",
+              "line_type": "solid",
+              "line_width": "normal"
+            }
+          }
+        ],
+        "yaxis": {
+          "label": "Risk Score",
+          "scale": "linear",
+          "min": "0",
+          "max": "100"
+        },
+        "markers": [
+          {
+            "value": "y = 76",
+            "display_type": "error dashed",
+            "label": "Block Threshold"
+          }
+        ]
+      },
+      "layout": {
+        "x": 6,
+        "y": 2,
+        "width": 6,
+        "height": 3
+      }
+    },
+    {
+      "id": 7,
+      "definition": {
+        "title": "Attack Categories Breakdown",
+        "type": "toplist",
+        "requests": [
+          {
+            "q": "top(sum:security.attack_type.count{*} by {attack_category}.as_count(), 10, 'sum', 'desc')"
+          }
+        ]
+      },
+      "layout": {
+        "x": 0,
+        "y": 5,
+        "width": 4,
+        "height": 3
+      }
+    },
+    {
+      "id": 8,
+      "definition": {
+        "title": "Vertex AI Sentiment Score",
+        "type": "timeseries",
+        "requests": [
+          {
+            "q": "avg:vertex_ai.sentiment.score{*}",
+            "display_type": "line",
+            "style": {
+              "palette": "cool",
+              "line_type": "solid",
+              "line_width": "normal"
+            }
+          }
+        ],
+        "yaxis": {
+          "label": "Sentiment",
+          "scale": "linear",
+          "min": "-1",
+          "max": "1"
+        },
+        "markers": [
+          {
+            "value": "y = 0",
+            "display_type": "info dashed",
+            "label": "Neutral"
+          }
+        ]
+      },
+      "layout": {
+        "x": 4,
+        "y": 5,
+        "width": 4,
+        "height": 3
+      }
+    },
+    {
+      "id": 9,
+      "definition": {
+        "title": "Vertex AI Entity Detection",
+        "type": "query_value",
+        "requests": [
+          {
+            "q": "sum:vertex_ai.entities.detected{*}.as_count()",
+            "aggregator": "sum"
+          }
+        ],
+        "autoscale": true,
+        "precision": 0,
+        "text_align": "center",
+        "custom_unit": "entities"
+      },
+      "layout": {
+        "x": 8,
+        "y": 5,
+        "width": 4,
+        "height": 3
+      }
+    },
+    {
+      "id": 10,
+      "definition": {
+        "title": "LLM Response Latency (p50, p95, p99)",
+        "type": "timeseries",
+        "requests": [
+          {
+            "q": "p50:llm.request.latency{*}",
+            "display_type": "line",
+            "style": {
+              "palette": "green",
+              "line_type": "solid",
+              "line_width": "normal"
+            }
+          },
+          {
+            "q": "p95:llm.request.latency{*}",
+            "display_type": "line",
+            "style": {
+              "palette": "orange",
+              "line_type": "solid",
+              "line_width": "normal"
+            }
+          },
+          {
+            "q": "p99:llm.request.latency{*}",
+            "display_type": "line",
+            "style": {
+              "palette": "red",
+              "line_type": "solid",
+              "line_width": "normal"
+            }
+          }
+        ],
+        "yaxis": {
+          "label": "Latency (ms)",
+          "scale": "linear"
+        },
+        "markers": [
+          {
+            "value": "y = 10000",
+            "display_type": "warning dashed",
+            "label": "10s threshold"
+          }
+        ]
+      },
+      "layout": {
+        "x": 0,
+        "y": 8,
+        "width": 6,
+        "height": 3
+      }
+    },
+    {
+      "id": 11,
+      "definition": {
+        "title": "Cost Attack Detection",
+        "type": "timeseries",
+        "requests": [
+          {
+            "q": "sum:cost.attack.detected{*}.as_count()",
+            "display_type": "bars",
+            "style": {
+              "palette": "purple",
+              "line_type": "solid",
+              "line_width": "normal"
+            }
+          }
+        ],
+        "yaxis": {
+          "label": "Attacks",
+          "scale": "linear"
+        }
+      },
+      "layout": {
+        "x": 6,
+        "y": 8,
+        "width": 6,
+        "height": 3
+      }
+    },
+    {
+      "id": 12,
+      "definition": {
+        "title": "Token Usage Estimation",
+        "type": "timeseries",
+        "requests": [
+          {
+            "q": "sum:cost.tokens.estimated{*}",
+            "display_type": "area",
+            "style": {
+              "palette": "purple",
+              "line_type": "solid",
+              "line_width": "normal"
+            }
+          }
+        ],
+        "yaxis": {
+          "label": "Tokens",
+          "scale": "linear"
+        },
+        "markers": [
+          {
+            "value": "y = 10000",
+            "display_type": "error dashed",
+            "label": "Exhaustion threshold"
+          }
+        ]
+      },
+      "layout": {
+        "x": 0,
+        "y": 11,
+        "width": 6,
+        "height": 3
+      }
+    },
+    {
+      "id": 13,
+      "definition": {
+        "title": "Security Confidence Score",
+        "type": "timeseries",
+        "requests": [
+          {
+            "q": "avg:security.confidence{*}",
+            "display_type": "line",
+            "style": {
+              "palette": "dog_classic",
+              "line_type": "solid",
+              "line_width": "normal"
+            }
+          }
+        ],
+        "yaxis": {
+          "label": "Confidence %",
+          "scale": "linear",
+          "min": "0",
+          "max": "100"
+        }
+      },
+      "layout": {
+        "x": 6,
+        "y": 11,
+        "width": 6,
+        "height": 3
+      }
+    },
+    {
+      "id": 14,
+      "definition": {
+        "title": "Active Monitors Status",
+        "type": "manage_status",
+        "query": "tag:devshield-ai",
+        "summary_type": "monitors",
+        "show_priority": true,
+        "display_format": "countsAndList",
+        "color_preference": "background",
+        "hide_zero_counts": true
+      },
+      "layout": {
+        "x": 0,
+        "y": 14,
+        "width": 12,
+        "height": 3
+      }
+    }
+  ],
+  "template_variables": [
+    {
+      "name": "env",
+      "default": "development",
+      "prefix": "env"
+    },
+    {
+      "name": "service",
+      "default": "devshield-ai",
+      "prefix": "service"
+    }
+  ],
+  "layout_type": "ordered",
+  "notify_list": [],
+  "reflow_type": "fixed"
+}
