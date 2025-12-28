@@ -191,12 +191,12 @@ export default function AttacksPage() {
       {/* Attack Details Modal */}
       {selectedAttack && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
-          <div className="bg-slate-800/50 rounded-lg shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto">
-            <div className="sticky top-0 bg-slate-800/50 border-b border-slate-700/50 px-6 py-4 flex items-center justify-between">
+          <div className="bg-slate-900 rounded-lg shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto border border-slate-700/50">
+            <div className="sticky top-0 bg-slate-800 border-b border-slate-700/50 px-6 py-4 flex items-center justify-between">
               <h2 className="text-xl font-bold text-slate-100">Attack Details</h2>
               <button
                 onClick={() => setSelectedAttack(null)}
-                className="text-slate-400 hover:text-slate-400 text-2xl"
+                className="text-slate-400 hover:text-slate-300 text-2xl"
               >
                 ×
               </button>
@@ -213,7 +213,7 @@ export default function AttacksPage() {
                   </div>
                   <div>
                     <span className="text-slate-400">Risk Score:</span>
-                    <p className="font-mono font-bold text-2xl text-red-700">{selectedAttack.riskScore}/100</p>
+                    <p className="font-mono font-bold text-2xl text-red-400">{selectedAttack.riskScore}/100</p>
                   </div>
                   <div>
                     <span className="text-slate-400">User ID:</span>
@@ -229,24 +229,24 @@ export default function AttacksPage() {
               {/* Prompt */}
               <div>
                 <h3 className="text-sm font-semibold text-slate-300 mb-2">Original Prompt</h3>
-                <div className="bg-slate-800/50 border border-slate-700/50 rounded-lg p-4">
-                  <p className="text-sm text-slate-100 whitespace-pre-wrap">{selectedAttack.prompt}</p>
+                <div className="bg-slate-800 border border-slate-700/50 rounded-lg p-4">
+                  <p className="text-sm text-slate-200 whitespace-pre-wrap">{selectedAttack.prompt}</p>
                 </div>
               </div>
 
               {/* Detection Details */}
               <div>
                 <h3 className="text-sm font-semibold text-slate-300 mb-2">Detection Details</h3>
-                <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 space-y-2">
+                <div className="bg-gradient-to-br from-yellow-900/20 to-orange-900/20 border border-yellow-700/30 rounded-lg p-4 space-y-2">
                   <div className="flex items-center gap-2">
                     <span className="text-sm font-medium text-slate-300">Patterns Detected:</span>
-                    <span className="font-bold text-yellow-900">{selectedAttack.detectedPatterns}</span>
+                    <span className="font-bold text-yellow-400">{selectedAttack.detectedPatterns}</span>
                   </div>
                   <div>
                     <span className="text-sm font-medium text-slate-300">Attack Categories:</span>
                     <div className="flex flex-wrap gap-2 mt-2">
                       {selectedAttack.attackCategories.map((cat, i) => (
-                        <span key={i} className="px-2 py-1 bg-red-100 text-red-800 rounded text-xs font-medium">
+                        <span key={i} className="px-2 py-1 bg-red-500/20 text-red-300 border border-red-500/30 rounded text-xs font-medium">
                           {cat}
                         </span>
                       ))}
@@ -267,10 +267,10 @@ export default function AttacksPage() {
               {selectedAttack.aiAnalysis && (
                 <div>
                   <h3 className="text-sm font-semibold text-slate-300 mb-2">🤖 AI Analysis</h3>
-                  <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 space-y-3">
+                  <div className="bg-gradient-to-br from-blue-900/20 to-purple-900/20 border border-blue-700/30 rounded-lg p-4 space-y-3">
                     <div>
                       <span className="text-sm font-medium text-slate-300">Attack Type:</span>
-                      <p className="text-sm font-bold text-blue-900">{selectedAttack.aiAnalysis.attackType}</p>
+                      <p className="text-sm font-bold text-blue-300">{selectedAttack.aiAnalysis.attackType}</p>
                     </div>
                     <div>
                       <span className="text-sm font-medium text-slate-300">Summary:</span>
