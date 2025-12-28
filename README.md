@@ -190,7 +190,7 @@ Every chat request returns:
 **Datadog Integration Proof:**
 - ⚠️ **Note:** Cannot share personal Datadog account access
 - ✅ **Screenshots:** See `screenshots/` folder (5 critical images)
-- ✅ **Demo Video:** Datadog dashboard tour at [1:40-2:10]
+- ✅ **Demo Video:** (Youtube)[https://youtu.be/Y6nmH2XftIM]
 - ✅ **Documentation:** Complete implementation in `/docs` folder
 - ✅ **Code:** All Datadog integration code in repository
 
