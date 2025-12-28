@@ -279,7 +279,7 @@ export default function AttacksPage() {
                     <span className="text-sm font-medium text-slate-300 block mb-1">Reasoning:</span>
                     <ul className="space-y-1 pl-4">
                       {selectedAttack.reasoning.map((reason, i) => (
-                        <li key={i} className="text-xs text-slate-300">• {reason}</li>
+                        <li key={i} className="text-xs text-slate-300 break-words">• {reason}</li>
                       ))}
                     </ul>
                   </div>
@@ -293,18 +293,18 @@ export default function AttacksPage() {
                   <div className="bg-gradient-to-br from-blue-900/20 to-purple-900/20 border border-blue-700/30 rounded-lg p-4 space-y-3">
                     <div>
                       <span className="text-sm font-medium text-slate-300">Attack Type:</span>
-                      <p className="text-sm font-bold text-blue-300">{selectedAttack.aiAnalysis.attackType}</p>
+                      <p className="text-sm font-bold text-blue-300 break-words">{selectedAttack.aiAnalysis.attackType}</p>
                     </div>
                     <div>
                       <span className="text-sm font-medium text-slate-300">Summary:</span>
-                      <p className="text-sm text-slate-300 mt-1">{selectedAttack.aiAnalysis.summary}</p>
+                      <p className="text-sm text-slate-300 mt-1 break-words">{selectedAttack.aiAnalysis.summary}</p>
                     </div>
                     {selectedAttack.aiAnalysis.mitigationSteps.length > 0 && (
                       <div>
                         <span className="text-sm font-medium text-slate-300">Mitigation Steps:</span>
                         <ol className="mt-1 space-y-1 pl-4">
                           {selectedAttack.aiAnalysis.mitigationSteps.map((step, i) => (
-                            <li key={i} className="text-xs text-slate-300">{i + 1}. {step}</li>
+                            <li key={i} className="text-xs text-slate-300 break-words">{i + 1}. {step}</li>
                           ))}
                         </ol>
                       </div>
