@@ -195,7 +195,7 @@ Every chat request returns:
 - **SLOs:** 4 service level objectives
 - **Metrics:** 16 custom security metrics
 - ✅ **Screenshots:** See `screenshots/` folder (5 critical images)
-- ✅ **Demo Video:** Datadog dashboard tour at [1:40-2:10]
+- ✅ **Demo Video:** [DevShield AI Youtube Video](https://youtu.be/Y6nmH2XftIM)
 - ✅ **Configuration Exports:** All JSON configs in `/datadog` folder
 
 **Repository:**
