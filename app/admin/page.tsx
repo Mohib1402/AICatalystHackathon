@@ -56,6 +56,21 @@ export default function AdminDashboard() {
     }
   };
 
+  const handleLogout = async () => {
+    try {
+      const response = await fetch('/api/admin/logout', {
+        method: 'POST',
+        credentials: 'include',
+      });
+
+      if (response.ok) {
+        router.push('/admin/login');
+      }
+    } catch (err) {
+      console.error('Logout failed:', err);
+    }
+  };
+
   if (loading) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex items-center justify-center">
@@ -122,6 +137,12 @@ export default function AdminDashboard() {
               >
                 Back to App
               </a>
+              <button
+                onClick={handleLogout}
+                className="text-sm font-medium bg-red-600/20 border border-red-500/30 text-red-300 px-4 py-2 rounded-lg hover:bg-red-600/30 hover:border-red-500/50 transition-all"
+              >
+                Logout
+              </button>
             </div>
           </div>
         </div>

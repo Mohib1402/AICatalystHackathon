@@ -91,15 +91,38 @@ export default function UsersPage() {
     return `${minutes}m ${seconds}s`;
   };
 
+  const handleLogout = async () => {
+    try {
+      const response = await fetch('/api/admin/logout', {
+        method: 'POST',
+        credentials: 'include',
+      });
+
+      if (response.ok) {
+        router.push('/admin/login');
+      }
+    } catch (err) {
+      console.error('Logout failed:', err);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
       <header className="border-b border-slate-700/50 bg-slate-900/90 backdrop-blur-md shadow-xl">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Blocked Users & IPs</h1>
-            <a href="/admin" className="text-sm font-medium text-blue-400 hover:text-blue-300 transition-colors">
-              ← Back to Dashboard
-            </a>
+            <div className="flex items-center gap-4">
+              <a href="/admin" className="text-sm font-medium text-blue-400 hover:text-blue-300 transition-colors">
+                ← Back to Dashboard
+              </a>
+              <button
+                onClick={handleLogout}
+                className="text-sm font-medium bg-red-600/20 border border-red-500/30 text-red-300 px-4 py-2 rounded-lg hover:bg-red-600/30 hover:border-red-500/50 transition-all"
+              >
+                Logout
+              </button>
+            </div>
           </div>
         </div>
       </header>
